@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Path Finding 3D</title>
+
+</head>
+
+<body>
+    <div id="asal"></div>
+    <div id="tujuan"></div>
+    <div id="jalur"></div>
+
+    <script type="text/javascript" src="./lib/pathfinding-browser.js"></script>
+    <script async>
+        var asal = document.querySelector("#asal");
+        var tujuan = document.querySelector("#tujuan");
+        var jalur = document.querySelector("#jalur");
+
+        // peta 3 dimensi 4x4x3 = 48 node (3 lantai)
+        var nodes = [
+            // lantai 1 (node 0 s.d. 15)
+            new PF.Node(0, 0, 0),new PF.Node(1, 0, 0),new PF.Node(2, 0, 0),new PF.Node(3, 0, 0),
+            new PF.Node(0, 1, 0),new PF.Node(1, 1, 0),new PF.Node(2, 1, 0),new PF.Node(3, 1, 0),
+            new PF.Node(0, 2, 0),new PF.Node(1, 2, 0),new PF.Node(2, 2, 0),new PF.Node(3, 2, 0),
+            new PF.Node(0, 3, 0),new PF.Node(1, 3, 0),new PF.Node(2, 3, 0),new PF.Node(3, 3, 0),
+            // lantai 2 (node 16 s.d. 31)
+            new PF.Node(0, 0, 1),new PF.Node(1, 0, 1),new PF.Node(2, 0, 1),new PF.Node(3, 0, 1),
+            new PF.Node(0, 1, 1),new PF.Node(1, 1, 1),new PF.Node(2, 1, 1),new PF.Node(3, 1, 1),
+            new PF.Node(0, 2, 1),new PF.Node(1, 2, 1),new PF.Node(2, 2, 1),new PF.Node(3, 2, 1),
+            new PF.Node(0, 3, 1),new PF.Node(1, 3, 1),new PF.Node(2, 3, 1),new PF.Node(3, 3, 1),
+            // lantai 3 (node 32 s.d. 47)
+            new PF.Node(0, 0, 2),new PF.Node(1, 0, 2),new PF.Node(2, 0, 2),new PF.Node(3, 0, 2),
+            new PF.Node(0, 1, 2),new PF.Node(1, 1, 2),new PF.Node(2, 1, 2),new PF.Node(3, 1, 2),
+            new PF.Node(0, 2, 2),new PF.Node(1, 2, 2),new PF.Node(2, 2, 2),new PF.Node(3, 2, 2),
+            new PF.Node(0, 3, 2),new PF.Node(1, 3, 2),new PF.Node(2, 3, 0),new PF.Node(3, 3, 2),
+            
+        ];
+        
+        // Membuat jalur
+        // lantai 1
+        nodes[0].neighbors.push(nodes[1]);
+        nodes[1].neighbors.push(nodes[0], nodes[2],nodes[5]);
+        nodes[2].neighbors.push(nodes[1], nodes[3]);
+        nodes[3].neighbors.push(nodes[2]);
+        nodes[5].neighbors.push(nodes[1],nodes[10]); // nodes [5] dan nodes[10] diagonal
+        // tangga lt1 ke lt2
+        nodes[5].neighbors.push(nodes[21]);
+        nodes[21].neighbors.push(nodes[5]);
+        //lantai 2
+        nodes[21].neighbors.push(nodes[22]);
+        nodes[22].neighbors.push(nodes[21],nodes[23]);
+        nodes[23].neighbors.push(nodes[22]);
+        // tangga lt2 ke lt3
+        nodes[22].neighbors.push(nodes[38]);
+        nodes[38].neighbors.push(nodes[22]);
+        //lantai 3
+        nodes[38].neighbors.push(nodes[42]);
+        nodes[42].neighbors.push(nodes[38], nodes[43]);
+        nodes[43].neighbors.push(nodes[42],nodes[47]);
+        nodes[47].neighbors.push(nodes[43]);
+        
+
+        // Membuat finder
+        var finder = new PF.AStarFinder();
+
+        // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
+        var startNode = nodes[43];
+        console.log(startNode);
+        asal.innerHTML = "Asal = (" + startNode.x + ", " + startNode.y + ", " + startNode.z + ")";
+
+        // Tujuan | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
+        var endNode = nodes[10];
+        console.log(endNode);
+        tujuan.innerHTML = "Tujuan = (" + endNode.x + ", " + endNode.y + ", " + endNode.z + ")";
+
+        // Cari jalan
+        var path = finder.findPath(startNode, endNode, nodes);
+        console.log(path);
+        jalur.innerHTML = path;
+
+    </script>
+
+</body>
+
+</html>

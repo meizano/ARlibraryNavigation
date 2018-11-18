@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Path Finding 2D</title>
+
+</head>
+
+<body>
+    <div id="asal"></div>
+    <div id="tujuan"></div>
+    <div id="jalur"></div>
+
+    <script type="text/javascript" src="./lib/pathfinding-browser.js"></script>
+    <script async>
+        var asal = document.querySelector("#asal");
+        var tujuan = document.querySelector("#tujuan");
+        var jalur = document.querySelector("#jalur");
+
+        // Peta 2D
+        var matrix = [
+            [0, 0, 0, 1, 0],
+            [1, 0, 0, 0, 1],
+            [0, 0, 1, 0, 0],
+        ];
+        var grid = new PF.Grid(5, 3, matrix);
+        console.log(grid);
+
+        // Membuat finder
+        var finder = new PF.AStarFinder();
+
+        // Titik awal
+        var startNode = grid.getNodeAt(1, 2, 0);
+        console.log(startNode);
+        asal.innerHTML = startNode;
+
+        // Tujuan
+        var endNode = grid.getNodeAt(4, 2, 0);
+        console.log(endNode);
+        tujuan.innerHTML = endNode;
+
+        // Cari jalan
+        var path = finder.findPath(startNode, endNode, grid.nodes);
+        console.log(path);
+        jalur.innerHTML = path;
+
+    </script>
+
+</body>
+
+</html>
