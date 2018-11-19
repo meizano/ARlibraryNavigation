@@ -12,126 +12,47 @@
     <div id="jalur"></div>
 
     <script type="text/javascript" src="./lib/pathfinding-browser.js"></script>
+    <script type="text/javascript" src="./js/navigasi.js"></script>
     <script async>
         var asal = document.querySelector("#asal");
         var tujuan = document.querySelector("#tujuan");
         var jalur = document.querySelector("#jalur");
 
-        function create3DLayout(x, y, z) {
-            let layout = new Array(x);
-            for (let i = 0; i < x; i++) {
-                layout[i] = new Array(y);
-                for (let j = 0; j < y; j++) {
-                    layout[i][j] = new Array(z);
-                    for (let k = 0; k < z; k++) {
-                        // nodes.push(new PF.Node(i, j, k));
-                        // let xyz = i + '-' + j + '-' + k;
-                        layout[i][j][k] = new PF.Node(i, j, k);
-                    }
-                }
-            }
-            return layout;
-        }
-
-        function createAllWalkable(layout) {
-            // this.layout = layout;
-
-            for (let i = 0; i < layout.length; i++) {
-                for (let j = 0; j < layout[i].length; j++) {
-                    for (let k = 0; k < layout[i][j].length; k++) {
-                        // console.log("--------------");
-                        // console.log(layout[i][j][k]);
-                        // console.log("--------------");
-                        // let count = 0;
-
-                        let mInit = (i + -1 >= 0) ? -1 : 0;
-                        let mEnd = (i + 1 < layout.length) ? 1 : 0;
-
-                        for (let m = mInit; m <= mEnd; m++) {
-
-                            let nInit = (j + -1 >= 0) ? -1 : 0;
-                            let nEnd = (j + 1 < layout[i].length) ? 1 : 0;
-
-                            for (let n = nInit; n <= nEnd; n++) {
-
-                                let oInit = (k + -1 >= 0) ? -1 : 0;
-                                let oEnd = (k + 1 < layout[i][j].length) ? 1 : 0;
-
-                                for (let o = oInit; o <= oEnd; o++) {
-
-                                    let xt = m + i;
-                                    let yt = n + j;
-                                    let zt = o + k;
-
-                                    if (layout[xt][yt][zt] != layout[i][j][k]) {
-                                        // console.log(layout[xt][yt][zt]);
-                                        // console.log(xt + ',' + yt + ',' + zt + ' bisa');
-                                        layout[i][j][k].neighbors.push(layout[xt][yt][zt]);
-                                        // count++;
-                                    }
-                                }
-                            }
-                        }
-                        // console.log(count);
-                    }
-                }
-            }
-            return layout;
-        }
+        
 
         // Create building
         var building = create3DLayout(26, 26, 3);
         
         // Create path to every corner of building
-        buildingAllWalkable = createAllWalkable(building);
+        createAllWalkable(building);
 
-        function createWalkablePath(newLayout, nodeStart, nodeEnd, layout) {
-            newLayout = this.newLayout;
+        // var nodes = building;
+        
+        var nodes = create3DLayout(26, 26, 3);
 
-            let explorer = new PF.AStarFinder();
-            let exploredPath = explorer.findPath(nodeStart, nodeEnd, layout);
-            
-            let i = 0;
-
-            while(exploredPath)
-            {
-                newLayout[exploredPath[i][0]][exploredPath[i][1]][exploredPath[i][2]].neighbors.push(exploredPath[i+1]);
-                newLayout[exploredPath[i+1][0]][exploredPath[i+1][1]][exploredPath[i+1][2]].neighbors.push(exploredPath[i]);
-                i++;
-            }
-
-        }
-
-        var nodes = building;
-
-        createWalkablePath(nodes,building[7][14][0], building[9][17][0], building);
-
-
-
-
-
-        // console.log(createWalkablePath(nodes[0][0][0], nodes[1][1][2]));
-
-
-
+        createWalkablePath(nodes, building[7][14][0], building[9][17][0], building);
+        createWalkablePath(nodes, building[0][0][0], building[25][25][2], building);
+        createWalkablePath(nodes, building[0][25][0], building[9][17][0], building);
 
         // Membuat finder
         var finder = new PF.AStarFinder();
 
         // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var startNode = nodes[7][14][0];
+        var startNode = nodes[14][14][2];
         console.log(startNode);
         asal.innerHTML = "Asal = (" + startNode.x + ", " + startNode.y + ", " + startNode.z + ")";
 
         // Tujuan | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var endNode = nodes[9][17][0];
+        var endNode = nodes[17][17][2];
         console.log(endNode);
         tujuan.innerHTML = "Tujuan = (" + endNode.x + ", " + endNode.y + ", " + endNode.z + ")";
 
+        var path;
+
         // Cari jalan
-        var path = finder.findPath(startNode, endNode, nodes);
+        path = finder.findPath(startNode, endNode, nodes);
         console.log(path);
-        jalur.innerHTML = path;
+        jalur.innerHTML += path;
     </script>
 
 </body>
