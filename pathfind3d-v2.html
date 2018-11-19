@@ -18,21 +18,13 @@
         var tujuan = document.querySelector("#tujuan");
         var jalur = document.querySelector("#jalur");
 
-        
-
-        // Create building
-        var building = create3DLayout(26, 26, 3);
-        
-        // Create path to every corner of building
-        createAllWalkable(building);
-
-        // var nodes = building;
-        
         var nodes = create3DLayout(26, 26, 3);
 
-        createWalkablePath(nodes, building[7][14][0], building[9][17][0], building);
-        createWalkablePath(nodes, building[0][0][0], building[25][25][2], building);
-        createWalkablePath(nodes, building[0][25][0], building[9][17][0], building);
+        createWalkablePath(nodes, nodes[7][14][0], nodes[9][17][0]);
+        createWalkablePath(nodes, nodes[0][0][0], nodes[25][25][2]);
+        createWalkablePath(nodes, nodes[0][25][0], nodes[9][17][0]);
+        createWalkablePath(nodes, nodes[1][15][1], nodes[9][17][0]);
+        createWalkablePath(nodes, nodes[20][25][1], nodes[9][17][0]);
 
         // Membuat finder
         var finder = new PF.AStarFinder();

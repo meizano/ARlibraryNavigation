@@ -5,8 +5,6 @@ function create3DLayout(x, y, z) {
         for (let j = 0; j < y; j++) {
             layout[i][j] = new Array(z);
             for (let k = 0; k < z; k++) {
-                // nodes.push(new PF.Node(i, j, k));
-                // let xyz = i + '-' + j + '-' + k;
                 layout[i][j][k] = new PF.Node(i, j, k);
             }
         }
@@ -15,15 +13,9 @@ function create3DLayout(x, y, z) {
 }
 
 function createAllWalkable(layout) {
-    // this.layout = layout;
-
     for (let i = 0; i < layout.length; i++) {
         for (let j = 0; j < layout[i].length; j++) {
             for (let k = 0; k < layout[i][j].length; k++) {
-                // console.log("--------------");
-                // console.log(layout[i][j][k]);
-                // console.log("--------------");
-                // let count = 0;
 
                 let mInit = (i + -1 >= 0) ? -1 : 0;
                 let mEnd = (i + 1 < layout.length) ? 1 : 0;
@@ -45,28 +37,28 @@ function createAllWalkable(layout) {
                             let zt = o + k;
 
                             if (layout[xt][yt][zt] != layout[i][j][k]) {
-                                // console.log(layout[xt][yt][zt]);
-                                // console.log(xt + ',' + yt + ',' + zt + ' bisa');
                                 layout[i][j][k].neighbors.push(layout[xt][yt][zt]);
-                                // count++;
                             }
                         }
                     }
                 }
-                // console.log(count);
             }
         }
     }
-    // return layout;
 }
 
-function createWalkablePath(layout, nodeStart, nodeEnd, walkablelayout) {
-    // layout = this.layout;
-    // console.log(layout);
+function createWalkablePath(layout, nodeStart, nodeEnd) {
+    // Create building
+    let walkablelayout = create3DLayout(layout.length, layout[0].length, layout[0][0].length);
+    console.log(walkablelayout);
+    // Create path to every corner of building
+    createAllWalkable(walkablelayout);
+
+    let startPath = walkablelayout[nodeStart.x][nodeStart.y][nodeStart.z];
+    let endPath = walkablelayout[nodeEnd.x][nodeEnd.y][nodeEnd.z];
 
     let explorer = new PF.AStarFinder();
-    let exploredPath = explorer.findPath(nodeStart, nodeEnd, walkablelayout);
-    console.log(exploredPath);
+    let exploredPath = explorer.findPath(startPath, endPath, walkablelayout);
 
     for (let i = 0; i < exploredPath.length - 1; i++) {
         // console.log("node: " + exploredPath[i]);
