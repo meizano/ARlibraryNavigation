@@ -3,7 +3,17 @@
 
 <head>
     <title>Library Pathfinding</title>
-
+<style>
+    .blok {
+        display: block;
+        position: absolute;
+        font-size: 4px;
+        width: 4em;
+        height: 4em;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
 </head>
 
 <body>
@@ -69,6 +79,7 @@
         var TG3BD = gedungPerpustakaanUnila[15][22][2]; // : Tangga 3 Barat Daya (Sebelah Depan Kanan) | MARKER 32
         var TD3BD = gedungPerpustakaanUnila[19][25][2]; // : Tangga Dalam 3 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 33
 
+        // Lantai 1
         createWalkablePath(gedungPerpustakaanUnila, PMP, RKKI);
         createWalkablePath(gedungPerpustakaanUnila, PMP, TG1BL);
         createWalkablePath(gedungPerpustakaanUnila, PMP, TG1BD);
@@ -76,25 +87,80 @@
 
         createWalkablePath(gedungPerpustakaanUnila, RKKI, TG1BL);
 
-        createWalkablePath(gedungPerpustakaanUnila, RBC1, TG1BD);
-        createWalkablePath(gedungPerpustakaanUnila, RBC1, TG1TG);
         createWalkablePath(gedungPerpustakaanUnila, RBC1, RK1A);
         createWalkablePath(gedungPerpustakaanUnila, RBC1, RK1B);
         createWalkablePath(gedungPerpustakaanUnila, RBC1, RK1C);
+        createWalkablePath(gedungPerpustakaanUnila, RBC1, TG1BD);
+        createWalkablePath(gedungPerpustakaanUnila, RBC1, TG1TG);
         createWalkablePath(gedungPerpustakaanUnila, RBC1, TD1BD);
 
-        var nodes =gedungPerpustakaanUnila;
-        
+        createWalkablePath(gedungPerpustakaanUnila, TG1BL, TG1TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG1BL, TG1TG);
+        createWalkablePath(gedungPerpustakaanUnila, TG1BL, TG1BD);
+        createWalkablePath(gedungPerpustakaanUnila, TG1BD, TG1TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG1BD, TG1TG);
+        createWalkablePath(gedungPerpustakaanUnila, TG1TL, TG1TG);
+
+        // Tangga lt1 ke lt2
+        createWalkablePath(gedungPerpustakaanUnila, TG1BL, TG2BL);
+        createWalkablePath(gedungPerpustakaanUnila, TG1TL, TG2TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG1TG, TG2TG);
+        createWalkablePath(gedungPerpustakaanUnila, TG1BD, TG2BD);
+        createWalkablePath(gedungPerpustakaanUnila, TD1BD, TD2BD);
+
+        //Lantai 2
+        createWalkablePath(gedungPerpustakaanUnila, TG2BL, RMJ);
+        createWalkablePath(gedungPerpustakaanUnila, TG2BL, TG2BD);
+        createWalkablePath(gedungPerpustakaanUnila, TG2BL, TG2TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG2TG, TG2BD);
+
+        createWalkablePath(gedungPerpustakaanUnila, TG2TL, RKC2);
+        createWalkablePath(gedungPerpustakaanUnila, TG2TG, RKC2);
+        createWalkablePath(gedungPerpustakaanUnila, RKC2, RC2A);
+        createWalkablePath(gedungPerpustakaanUnila, RKC2, RC2B);
+        createWalkablePath(gedungPerpustakaanUnila, RKC2, RC2C);
+
+        createWalkablePath(gedungPerpustakaanUnila, TD2BD, RBC2);
+        createWalkablePath(gedungPerpustakaanUnila, RBC2, RK2A);
+        createWalkablePath(gedungPerpustakaanUnila, RBC2, RK2B);
+        createWalkablePath(gedungPerpustakaanUnila, RBC2, RK2C);
+
+        // Tangga lt2 ke lt3
+        createWalkablePath(gedungPerpustakaanUnila, TG2BL, TG3BL);
+        createWalkablePath(gedungPerpustakaanUnila, TG2TL, TG3TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG2TG, TG3TG);
+        createWalkablePath(gedungPerpustakaanUnila, TG2BD, TG3BD);
+        createWalkablePath(gedungPerpustakaanUnila, TD2BD, TD3BD);
+
+        //Lantai 3
+        createWalkablePath(gedungPerpustakaanUnila, TG3BL, RSM);
+        createWalkablePath(gedungPerpustakaanUnila, TG3BL, RRP);
+        createWalkablePath(gedungPerpustakaanUnila, TG3BD, RRP);
+        createWalkablePath(gedungPerpustakaanUnila, TG3BD, RTE);
+        createWalkablePath(gedungPerpustakaanUnila, TG3BD, TG3TG);
+        createWalkablePath(gedungPerpustakaanUnila, TG3TG, RTI);
+        createWalkablePath(gedungPerpustakaanUnila, TG3TG, RMS);
+        createWalkablePath(gedungPerpustakaanUnila, TG3TG, TG3TL);
+        createWalkablePath(gedungPerpustakaanUnila, TG3TL, RSM);
+
+        createWalkablePath(gedungPerpustakaanUnila, TD3BD, RBC3);
+        createWalkablePath(gedungPerpustakaanUnila, RBC3, RK3A);
+        createWalkablePath(gedungPerpustakaanUnila, RBC3, RK3B);
+        createWalkablePath(gedungPerpustakaanUnila, RBC3, RK3C);
+
+
+        var nodes = gedungPerpustakaanUnila;
+
         // Membuat finder
         var finder = new PF.AStarFinder();
 
         // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var startNode = PMP;
+        var startNode = RMS;
         console.log(startNode);
         asal.innerHTML = "Asal = (" + startNode.x + ", " + startNode.y + ", " + startNode.z + ")";
 
         // Tujuan | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var endNode = RK1B;
+        var endNode = RK3B;
         console.log(endNode);
         tujuan.innerHTML = "Tujuan = (" + endNode.x + ", " + endNode.y + ", " + endNode.z + ")";
 
@@ -103,7 +169,9 @@
         // Cari jalan
         path = finder.findPath(startNode, endNode, nodes);
         console.log(path);
-        jalur.innerHTML += path;
+        for(let i = 0; i < path.length; i++) {
+            jalur.innerHTML += `<div class="blok" style="background-color: rgba(${path[i][2]*100},0,${60+(i*10)}, 0.3); left: ${path[i][0]*4}em; top: ${path[i][1]*4}em">${path[i]}</div>`;
+        }
     </script>
 
 </body>
