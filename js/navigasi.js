@@ -50,7 +50,7 @@ function createAllWalkable(layout) {
 function createWalkablePath(layout, nodeStart, nodeEnd) {
     // Create building
     let walkablelayout = create3DLayout(layout.length, layout[0].length, layout[0][0].length);
-    console.log(walkablelayout);
+    
     // Create path to every corner of building
     createAllWalkable(walkablelayout);
 
