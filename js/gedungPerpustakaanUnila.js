@@ -1,7 +1,6 @@
 function gedungPerpustakaan() {
-    let gedung = create3DLayout(40,40,3);
+    let gedung = create3DLayout(40, 40, 3);
 
-    
     // # Lantai 1
     gedung['PMP'] = gedung[12][23][0]; // : Pintu Masuk Perpustakaan | MARKER 1
     gedung['RBC1'] = gedung[17][21][0]; // : Ruang Baca Satu (Ruang Layanan Sirkulasi) | MARKER 2
@@ -121,8 +120,5 @@ function gedungPerpustakaan() {
     createWalkablePath(gedung, gedung['RBC3'], gedung['RK3B']);
     createWalkablePath(gedung, gedung['RBC3'], gedung['RK3C']);
 
-
-
     return gedung;
-
 }

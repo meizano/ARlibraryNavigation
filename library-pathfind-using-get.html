@@ -4,7 +4,7 @@
 <head>
     <title>Library Pathfinding</title>
     <style>
-        .blok {
+        .perjalanan {
         display: block;
         position: absolute;
         font-size: 4px;
@@ -43,7 +43,7 @@
             var jalur = document.querySelector("#jalur");
 
             var nodes = gedungPerpustakaan();
-            
+
             // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
             var startNode = nodes[origin];
             console.log(startNode);
@@ -60,7 +60,7 @@
             for (let i = 0; i < path.length; i++) {
                 jalur.innerHTML +=
                     `
-            <div class="blok" 
+            <div class="perjalanan" 
                 style="background-color: rgba(${path[i][2]*100},0,${60+(i*10)}, 0.3); 
                 left: ${path[i][0]*4}em; 
                 top: ${path[i][1]*4}em">
