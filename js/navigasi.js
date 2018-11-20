@@ -68,3 +68,7 @@ function createWalkablePath(layout, nodeStart, nodeEnd) {
     }
 
 }
+
+function findLocation(start,end,layout) {
+    return new PF.AStarFinder().findPath(start, end, layout);
+}

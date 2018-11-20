@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Library Pathfinding</title>
+    <style>
+        .blok {
+        display: block;
+        position: absolute;
+        font-size: 4px;
+        width: 4em;
+        height: 4em;
+        line-height: 4em;
+        border-radius: 50%;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+</head>
+
+<body>
+    <div id="asal"></div>
+    <div id="tujuan"></div>
+    <div id="jalur"></div>
+
+    <script type="text/javascript" src="./lib/pathfinding-browser.js"></script>
+    <script type="text/javascript" src="./js/navigasi.js"></script>
+    <script type="text/javascript" src="./js/gedungPerpustakaanUnila.js"></script>
+    <!-- polyfill for GET parameter -->
+    <script src="./lib/url-search-params.js"></script>
+    <script async>
+        // GET parameter
+        url = new URL(window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location
+            .search);
+        let searchParams = new URLSearchParams(url.search);
+        let origin = url.searchParams.get('origin');
+        let destination = url.searchParams.get('destination');
+
+        if (origin && destination) {
+
+            var asal = document.querySelector("#asal");
+            var tujuan = document.querySelector("#tujuan");
+            var jalur = document.querySelector("#jalur");
+
+            var nodes = gedungPerpustakaan();
+            
+            // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
+            var startNode = nodes[origin];
+            console.log(startNode);
+            asal.innerHTML = "Asal = (" + startNode.x + ", " + startNode.y + ", " + startNode.z + ")";
+
+            // Tujuan | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
+            var endNode = nodes[destination];
+            console.log(endNode);
+            tujuan.innerHTML = "Tujuan = (" + endNode.x + ", " + endNode.y + ", " + endNode.z + ")";
+
+            // Cari jalan
+            var path = findLocation(startNode, endNode, nodes);
+            console.log(path);
+            for (let i = 0; i < path.length; i++) {
+                jalur.innerHTML +=
+                    `
+            <div class="blok" 
+                style="background-color: rgba(${path[i][2]*100},0,${60+(i*10)}, 0.3); 
+                left: ${path[i][0]*4}em; 
+                top: ${path[i][1]*4}em">
+                ${path[i]}
+            </div>`;
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

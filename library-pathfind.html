@@ -31,18 +31,18 @@
         var tujuan = document.querySelector("#tujuan");
         var jalur = document.querySelector("#jalur");
 
-        var nodes = gedungPerpustakaanUnila;
+        var nodes = gedungPerpustakaan();
 
         // Membuat finder
         var finder = new PF.AStarFinder();
 
         // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var startNode = PMP;
+        var startNode = nodes['PMP'];
         console.log(startNode);
         asal.innerHTML = "Asal = (" + startNode.x + ", " + startNode.y + ", " + startNode.z + ")";
 
         // Tujuan | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
-        var endNode = RKP;
+        var endNode = nodes['RKP'];
         console.log(endNode);
         tujuan.innerHTML = "Tujuan = (" + endNode.x + ", " + endNode.y + ", " + endNode.z + ")";
 
