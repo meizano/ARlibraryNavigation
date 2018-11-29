@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang=id>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AR Library Navigation">
+    <meta name="author" content="Meizano">
+    <meta name="theme-color" content="#ff9966" />
+    <title>Navigasi Lokasi Perpustakaan</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page" id="navigasi">
+            <div class="title">
+                <div class="logo"></div>
+                <h1>Navigasi Lokasi Perpustakaan</h1>
+            </div>
+            <div class="borangInputTujuan">
+                <form id="survey-form" action="ar-library-navigation.html">
+                    <div class="input-field" id="field-tujuan">
+                        <input type="text" id="tujuan" name="tujuan" placeholder="Masukkan kode tujuan" required
+                            autofocus />
+                    </div>
+                    <div class="input-field" id="field-submit">
+                        <input type="submit" id="submit" name="submit" value="Kirim" />
+                    </div>
+            </div>
+            </form>
+            <div class="daftarLokasi" id="daftarLokasi">
+                <ol>
+                    <li>Lantai 1
+                        <ul>
+                <li>PMP: Pintu Masuk Perpustakaan | MARKER 1</li>
+                <li>RBC1: Ruang Baca Satu (Ruang Layanan Sirkulasi) | MARKER 2</li>
+                <li>RK1A: Rak Koleksi A Ruang Baca 1 | MARKER 3</li>
+                <li>RK1B: Rak Koleksi B Ruang Baca 1 | MARKER 4</li>
+                <li>RK1C: Rak Koleksi C Ruang Baca 1 | MARKER 5</li>
+                <li>RKKI: Ruang Layanan Koleksi Karya Ilmiah | MARKER 6</li>
+                <li>RPK: Ruang Pengelolaan</li>
+                <li>RPA: Ruang Pengadaan</li>
+                <li>RPO: Ruang Pengolahan</li>
+                <li>RPR: Ruang Perawatan</li>
+                <li>TG1BL: Tangga 1 Barat Laut (Sebelah Depan Kiri) | MARKER 7</li>
+                <li>TG1TL: Tangga 1 Timur Laut (Sebelah Belakang Kiri) | MARKER 8</li>
+                <li>TG1TG: Tangga 1 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 9</li>
+                <li>TG1BD: Tangga 1 Barat Daya (Sebelah Depan Kanan) | MARKER 10</li>
+                <li>TD1BD: Tangga Dalam 1 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 11</li>
+            </ul></li>
+            <li>Lantai 2
+                    <ul>
+                <li>RLR: Ruang Layanan Referensi</li>
+                <li>RMJ: Majalah dan Jurnal </li>
+                <li>RKC2: Ruang Layanan Koleksi Cadangan lantai 2 | MARKER 12</li>
+                <li>RC2A: Rak Koleksi A Ruang Koleksi Cadangan 2 | MARKER 13</li>
+                <li>RC2B: Rak Koleksi B Ruang Koleksi Cadangan 2 | MARKER 14</li>
+                <li>RC2C: Rak Koleksi C Ruang Koleksi Cadangan 2 | MARKER 15</li>
+                <li>RKP: Ruang Kepala Perpustakaan</li>
+                <li>RBC2: Ruang Baca Dua | MARKER 16</li>
+                <li>RK2A: Rak Koleksi A Ruang Baca 2 | MARKER 17</li>
+                <li>RK2B: Rak Koleksi B Ruang Baca 2 | MARKER 18</li>
+                <li>RK2C: Rak Koleksi C Ruang Baca 2 | MARKER 19</li>
+                <li>TG2BL: Tangga 2 Barat Laut (Sebelah Depan Kiri) | MARKER 20</li>
+                <li>TG2TL: Tangga 2 Timur Laut (Sebelah Belakang Kiri) | MARKER 21</li>
+                <li>TG2TG: Tangga 2 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 22</li>
+                <li>TG2BD: Tangga 2 Barat Daya (Sebelah Depan Kanan) | MARKER 23</li>
+                <li>TD2BD: Tangga Dalam 2 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 24</li>
+            </ul></li>
+            <li>Lantai 3
+                    <ul>
+                <li>RTI: Ruang Pengelola Teknologi Informasi Perpustakaan</li>
+                <li>RTE: Ruang Teater</li>
+                <li>RSM: Ruang Seminar</li>
+                <li>RRP: Ruang Rapat</li>
+                <li>RMS: Ruang Musola</li>
+                <li>RBC3: Ruang Baca Tiga | MARKER 25</li>
+                <li>RK3A: Rak Koleksi A Ruang Baca 3 | MARKER 26</li>
+                <li>RK3B: Rak Koleksi B Ruang Baca 3 | MARKER 27</li>
+                <li>RK3C: Rak Koleksi C Ruang Baca 3 | MARKER 28</li>
+                <li>TG3BL: Tangga 3 Barat Laut (Sebelah Depan Kiri) | MARKER 29</li>
+                <li>TG3TL: Tangga 3 Timur Laut (Sebelah Belakang Kiri) | MARKER 30</li>
+                <li>TG3TG: Tangga 3 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 31</li>
+                <li>TG3BD: Tangga 3 Barat Daya (Sebelah Depan Kanan) | MARKER 32</li>
+                <li>TD3BD: Tangga Dalam 3 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 33</li>
+            </ul></li>
+            </ol>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Hak cipta Meizano Ardhi Muhammad</p>
+        </div>
+    </div>
+</body>
+
+</html>
