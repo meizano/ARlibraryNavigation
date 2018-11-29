@@ -72,3 +72,9 @@ function createWalkablePath(layout, nodeStart, nodeEnd) {
 function findLocation(start,end,layout) {
     return new PF.AStarFinder().findPath(start, end, layout);
 }
+
+function getKode(object, value) {
+    let kode = Object.keys(object).find(key => object[key].x === value[0] && object[key].y === value[1] && object[key].z === value[2] );
+    // return (kode === undefined) ? value : kode;
+    return kode;
+  }

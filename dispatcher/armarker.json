@@ -1,0 +1,134 @@
+[
+    {
+        "marker": 1,
+        "kode": "PMP"
+    },
+    {
+        "marker": 2,
+        "kode": "RBC1"
+    },
+    {
+        "marker": 3,
+        "kode": "RK1A"
+    },
+    {
+        "marker": 4,
+        "kode": "RK1B"
+    },
+    {
+        "marker": 5,
+        "kode": "RK1C"
+    },
+    {
+        "marker": 6,
+        "kode": "RKKI"
+    },
+    {
+        "marker": 7,
+        "kode": "TG1BL"
+    },
+    {
+        "marker": 8,
+        "kode": "TG1TL"
+    },
+    {
+        "marker": 9,
+        "kode": "TG1TG"
+    },
+    {
+        "marker": 10,
+        "kode": "TG1BD"
+    },
+    {
+        "marker": 11,
+        "kode": "TD1BD"
+    },
+    {
+        "marker": 12,
+        "kode": "RKC2"
+    },
+    {
+        "marker": 13,
+        "kode": "RC2A"
+    },
+    {
+        "marker": 14,
+        "kode": "RC2B"
+    },
+    {
+        "marker": 15,
+        "kode": "RC2C"
+    },
+    {
+        "marker": 16,
+        "kode": "RBC2"
+    },
+    {
+        "marker": 17,
+        "kode": "RK2A"
+    },
+    {
+        "marker": 18,
+        "kode": "RK2B"
+    },
+    {
+        "marker": 19,
+        "kode": "RK2C"
+    },
+    {
+        "marker": 20,
+        "kode": "TG2BL"
+    },
+    {
+        "marker": 21,
+        "kode": "TG2TL"
+    },
+    {
+        "marker": 22,
+        "kode": "TG2TG"
+    },
+    {
+        "marker": 23,
+        "kode": "TG2BD"
+    },
+    {
+        "marker": 24,
+        "kode": "TD2BD"
+    },
+    {
+        "marker": 25,
+        "kode": "RBC3"
+    },
+    {
+        "marker": 26,
+        "kode": "RK3A"
+    },
+    {
+        "marker": 27,
+        "kode": "RK3B"
+    },
+    {
+        "marker": 28,
+        "kode": "RK3C"
+    },
+    {
+        "marker": 29,
+        "kode": "TG3BL"
+    },
+    {
+        "marker": 30,
+        "kode": "TG3TL"
+    },
+    {
+        "marker": 31,
+        "kode": "TG3TG"
+    },
+    {
+        "marker": 32,
+        "kode": "TG3BD"
+    },
+    {
+        "marker": 33,
+        "kode": "TD3BD"
+    }
+]

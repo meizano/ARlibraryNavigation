@@ -33,9 +33,6 @@
 
         var nodes = gedungPerpustakaan();
 
-        // Membuat finder
-        var finder = new PF.AStarFinder();
-
         // Titik awal | Coba diganti dengan node yang ada di jalur atau pun yang tidak dibuat di jalur
         var startNode = nodes['PMP'];
         console.log(startNode);
@@ -57,7 +54,7 @@
                 style="background-color: rgba(${path[i][2]*100},0,${60+(i*10)}, 0.3); 
                 left: ${path[i][0]*4}em; 
                 top: ${path[i][1]*4}em">
-                ${path[i]}
+                ${getKode(nodes, path[i])}
             </div>`;
         }
     </script>
