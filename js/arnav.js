@@ -1,5 +1,5 @@
-let asal = "PMP";
-let tujuan = "RKKI";
+let asal = "";
+let tujuan = "";
 
 // GET parameter
 url = new URL(window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location
@@ -7,9 +7,6 @@ url = new URL(window.location.protocol + "//" + window.location.host + "/" + win
 let searchParams = new URLSearchParams(url.search);
 tujuan = url.searchParams.get('tujuan');
 console.log(tujuan);
-
-// Membangun peta gedung
-let nodes = gedungPerpustakaan();
 
 // mengakses DOM scene
 scene = document.querySelector("a-scene");
