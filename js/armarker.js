@@ -40,12 +40,12 @@ function navigasiMarker(asl, tujn, nd) {
     console.log(tujn);
     console.log(nd);
     let markerPath = findLocation(nd[asl], nd[tujn], nd);
-    for (let i = 0; i < markerPath.length-1; i++) {
+    for (let i = 0; i < markerPath.length - 1; i++) {
         markerYes = getKode(nd, markerPath[i]);
         if (markerYes !== undefined) {
-            let rx = (markerPath[i+1][0] - markerPath[i][0] > 0 ) ? 90 : (markerPath[i+1][0] - markerPath[i][0] < 0 ) ? -90 : 0; 
-            let ry = (markerPath[i+1][1] - markerPath[i][1] > 0 ) ? 90 : (markerPath[i+1][1] - markerPath[i][1] < 0 ) ? -90 : 0;
-            let rz = (markerPath[i+1][2] - markerPath[i][2] > 0 ) ? 90 : (markerPath[i+1][2] - markerPath[i][2] < 0 ) ? -90 : 0;
+            let rx = (markerPath[i + 1][0] - markerPath[i][0] > 0) ? 90 : (markerPath[i + 1][0] - markerPath[i][0] < 0) ? -90 : 0;
+            let ry = (markerPath[i + 1][1] - markerPath[i][1] > 0) ? 90 : (markerPath[i + 1][1] - markerPath[i][1] < 0) ? -90 : 0;
+            let rz = (markerPath[i + 1][2] - markerPath[i][2] > 0) ? 90 : (markerPath[i + 1][2] - markerPath[i][2] < 0) ? -90 : 0;
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerYes + '"]');
             let bola = document.createElement('a-sphere');
@@ -71,4 +71,11 @@ function navigasiMarker(asl, tujn, nd) {
             bola.appendChild(cone);
         }
     }
+    let markerFinal = scene.querySelector('a-marker[data-marker="' + getKode(nd, markerPath[markerPath.length - 1]) + '"]');
+    let bola = document.createElement('a-sphere');
+    bola.setAttribute('position', '0 0.5 0');
+    bola.setAttribute('radius', '0.5');
+    bola.setAttribute('rotation', '0 0 0');
+    bola.setAttribute('color', 'red');
+    markerFinal.appendChild(bola);
 }
