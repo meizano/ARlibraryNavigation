@@ -29,17 +29,27 @@ function createMarker(markerl, scenel) {
 
 // Fungsi mengambil nilai data-marker
 function dataMarker(mark) {
-    console.log("Marker attributes: preset = " + mark.srcElement.getAttribute("preset") + ", type = " + mark.srcElement.getAttribute("type") + ", value = " + mark.srcElement.getAttribute("value") + ", url = " + mark.srcElement.getAttribute("url"));
-    console.log(mark.srcElement.getAttribute("data-marker"));
+    // console.log("Marker attributes: preset = " + mark.srcElement.getAttribute("preset") + ", type = " + mark.srcElement.getAttribute("type") + ", value = " + mark.srcElement.getAttribute("value") + ", url = " + mark.srcElement.getAttribute("url"));
+    // console.log(mark.srcElement.getAttribute("data-marker"));
     return mark.srcElement.getAttribute("data-marker");
 }
 
 // Fungsi menyematkan  marker
 function navigasiMarker(asl, tujn, nd) {
-    console.log(asl);
-    console.log(tujn);
-    console.log(nd);
+    //Menunjukkan jalur yang ditempuh
+    // console.log(asl);
+    // console.log(tujn);
+    // console.log(nd);
+    
+    // Menghitung waktu
+    // let start = new Date().getTime();
+
     let markerPath = findLocation(nd[asl], nd[tujn], nd);
+
+    // Menghitung waktu
+    // console.log("waktu A*");
+    // console.log(new Date().getTime() - start);
+
     for (let i = 0; i < markerPath.length - 1; i++) {
         markerYes = getKode(nd, markerPath[i]);
         if (markerYes !== undefined) {
@@ -78,4 +88,8 @@ function navigasiMarker(asl, tujn, nd) {
     bola.setAttribute('rotation', '0 0 0');
     bola.setAttribute('color', 'red');
     markerFinal.appendChild(bola);
+
+    //Menghitung waktu
+    // console.log("waktu generate marker");
+    // console.log(new Date().getTime() - start);
 }
