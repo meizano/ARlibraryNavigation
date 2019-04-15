@@ -6,7 +6,7 @@ url = new URL(window.location.protocol + "//" + window.location.host + "/" + win
     .search);
 let searchParams = new URLSearchParams(url.search);
 tujuan = url.searchParams.get('tujuan');
-console.log(tujuan);
+// console.log(tujuan);
 
 // mengakses DOM scene
 scene = document.querySelector("a-scene");
