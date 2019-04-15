@@ -18,13 +18,12 @@
     </style>
     <script src="./lib/url-search-params.js"></script>
     <script src="./lib/pathfinding-browser.js"></script>
-    <script async src="./lib/aframe.min.js"></script>
-    <script async src="./lib/aframe-ar.js"></script>
+    <script async src="./lib/aframe-master.min.js"></script>
+    <script async src="./lib/aframe-ar.min.js"></script>
 </head>
 
 <body>
-    <a-scene embedded vr-mode-ui="enabled: false;"
-        arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;'>
+    <a-scene embedded vr-mode-ui="enabled: false;" arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;'>
         <!-- add a simple camera -->
         <a-entity camera></a-entity>
     </a-scene>
