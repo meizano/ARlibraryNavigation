@@ -1,0 +1,102 @@
+// Fungsi membuat marker 
+function createMarker(markerl, scenel) {
+    for (let i = 0; i < markerl.length; i++) {
+        let marker =
+            `<a-marker type="barcode" value="${markerl[i].marker}" data-marker="${markerl[i].kode}">
+                    <a-plane rotation="-90 0 0" color="red">
+                        <a-text 
+                            value="${markerl[i].kode}" 
+                            color="white" 
+                            align="center"
+                            position="0 0.6 0">
+                        </a-text>
+                    </a-plane>
+                </a-marker>
+                `;
+        scenel.insertAdjacentHTML("beforeend", marker);
+
+        let domDataMarker = document.querySelector(`[data-marker="${markerl[i].kode}"]`);
+        domDataMarker.addEventListener("markerFound", function (e) {
+            // console.log("Marker found");
+            // asal dan navigasiMarker() perlu arnav.js
+            asal = dataMarker(e);
+            navigasiMarker(asal, tujuan, gedungPerpustakaan());
+        });
+    }
+}
+
+// Fungsi mengambil nilai data-marker
+function dataMarker(mark) {
+    return mark.target.getAttribute("data-marker");
+}
+
+//Convert radians to degrees
+Math.degrees = function (radians) {
+    return radians * 180 / Math.PI;
+};
+
+// Fungsi menyematkan  marker
+function navigasiMarker(asl, tujn, nd) {
+    //Menunjukkan jalur yang ditempuh
+    // console.log(asl);
+    // console.log(tujn);
+    // console.log(nd);
+
+    // Menghitung waktu
+    // let start = new Date().getTime();
+
+    if (asl == tujn) {
+        finalMarker(scene, tujn);
+    } else {
+        let markerPath = findLocation(nd[asl], nd[tujn], nd);
+
+        // Menghitung waktu
+        // console.log("waktu A*");
+        // console.log(new Date().getTime() - start);
+
+        for (let i = 0; i < markerPath.length - 1; i++) {
+            // getKode() perlu navigasi.js
+            markerPadaJalur = getKode(nd, markerPath[i]);
+            // console.log("jalur: " + markerPadaJalur);
+            if (markerPadaJalur == asl) {
+                panahMarker(scene, markerPadaJalur, markerPath[i], markerPath[i+1]);
+                break;
+            }
+        }
+    }
+
+    //Menghitung waktu
+    // console.log("waktu generate marker");
+    // console.log(new Date().getTime() - start);
+}
+
+// fungsi membuat finalMarker
+function finalMarker(scn, dtmarker) {
+    let markerFinal = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
+    let penandaTujuan = `<a-sphere position="0 0.5 0" radius="0.5" rotation="0 0 0" color="yellow"></a-sphere>`;
+    markerFinal.insertAdjacentHTML("beforeend", penandaTujuan);
+};
+
+// fungsi membuat panahMarker
+function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
+    let x = jalurmarkerberikutnya[0] - jalurmarker[0];
+    let y = jalurmarkerberikutnya[1] - jalurmarker[1];
+    let z = jalurmarkerberikutnya[2] - jalurmarker[2];
+    let rotasix = Math.degrees(Math.atan(z / y));
+    let rotasiy = Math.degrees(Math.atan(x / z));
+    let rotasiz = Math.degrees(Math.atan(y / x));
+    rotasix = isNaN(rotasix) ? 0 : rotasix;
+    rotasiy = isNaN(rotasiy) ? 0 : rotasiy;
+    rotasiz = isNaN(rotasiz) ? 0 : rotasiz;
+    rotasix += 180;
+    rotasiy += 180;
+    rotasiz += 180;
+
+    let markerAdd = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
+    let panah = `
+                <a-sphere position="0 0.3 0" radius="0.2" rotation="${rotasix} ${rotasiy} ${rotasiz}" color="green">
+                    <a-cylinder position="0 0.4 0" height="0.8" radius="0.2" color="green"></a-cylinder>
+                    <a-cone position="0 1 0" radius-bottom="0.3" radius-top="0" height="0.6" color="green"></a-cone>
+                </a-sphere>`;
+    markerAdd.insertAdjacentHTML("beforeend", panah);
+}
