@@ -35,13 +35,18 @@ function dataMarker(mark) {
     return mark.srcElement.getAttribute("data-marker");
 }
 
+//Convert radians to degrees
+Math.degrees = function (radians) {
+    return radians * 180 / Math.PI;
+};
+
 // Fungsi menyematkan  marker
 function navigasiMarker(asl, tujn, nd) {
     //Menunjukkan jalur yang ditempuh
     // console.log(asl);
     // console.log(tujn);
     // console.log(nd);
-    
+
     // Menghitung waktu
     // let start = new Date().getTime();
 
@@ -57,9 +62,9 @@ function navigasiMarker(asl, tujn, nd) {
             let x = markerPath[i + 1][0] - markerPath[i][0];
             let y = markerPath[i + 1][1] - markerPath[i][1];
             let z = markerPath[i + 1][2] - markerPath[i][2];
-            let rotasix = Math.atan(z/y);
-            let rotasiy = Math.atan(x/z);
-            let rotasiz = Math.atan(y/x);
+            let rotasix = Math.degrees(Math.atan(z / y));
+            let rotasiy = Math.degrees(Math.atan(x / z));
+            let rotasiz = Math.degrees(Math.atan(y / x));
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerYes + '"]');
             let bola = document.createElement('a-sphere');
