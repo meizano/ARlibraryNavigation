@@ -8,15 +8,16 @@ function createMarker(markerl, scenel) {
                             value="${markerl[i].kode}" 
                             color="white" 
                             align="center"
-                            position="0 0 -0.5">
+                            position="0 0.6 0">
                         </a-text>
                     </a-plane>
                 </a-marker>
                 `;
         scenel.insertAdjacentHTML("beforeend", marker);
         
-        let domDataMarker = document.querySelector(`[data-marker="${markerl[i].kode}]"`);
+        let domDataMarker = document.querySelector(`[data-marker="${markerl[i].kode}"]`);
         domDataMarker.addEventListener("markerFound", function (e) {
+            // console.log("Marker found");
             // asal dan navigasiMarker() perlu arnav.js
             asal = dataMarker(e);
             navigasiMarker(asal, tujuan, gedungPerpustakaan());
@@ -26,8 +27,13 @@ function createMarker(markerl, scenel) {
 
 // Fungsi mengambil nilai data-marker
 function dataMarker(mark) {
-    return mark.srcElement.getAttribute("data-marker");
+    return mark.target.getAttribute("data-marker");
 }
+
+//Convert radians to degrees
+Math.degrees = function (radians) {
+    return radians * 180 / Math.PI;
+};
 
 // Fungsi menyematkan  marker
 function navigasiMarker(asl, tujn, nd) {
@@ -48,6 +54,7 @@ function navigasiMarker(asl, tujn, nd) {
     for (let i = 0; i < markerPath.length - 1; i++) {
         // getKode() perlu navigasi.js
         markerPadaJalur = getKode(nd, markerPath[i]);
+        // console.log("jalur: " + markerPadaJalur);
         if (markerPadaJalur !== undefined) {
             
             let x = markerPath[i + 1][0] - markerPath[i][0];
@@ -56,6 +63,12 @@ function navigasiMarker(asl, tujn, nd) {
             let rotasix = Math.degrees(Math.atan(z / y));
             let rotasiy = Math.degrees(Math.atan(x / z));
             let rotasiz = Math.degrees(Math.atan(y / x));
+            rotasix = isNaN(rotasix) ? 0 : rotasix;
+            rotasiy = isNaN(rotasiy) ? 0 : rotasiy;
+            rotasiz = isNaN(rotasiz) ? 0 : rotasiz;
+            rotasix += 180;
+            rotasiy += 180;
+            rotasiz += 180;
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerPadaJalur + '"]');
             let panah = `

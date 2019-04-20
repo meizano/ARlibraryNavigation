@@ -13,7 +13,7 @@ function createMarker(markerl, scenel) {
         let tulisan = document.createElement('a-text');
         let informasi = "";
         informasi += markerl[i].kode;
-        tulisan.setAttribute('position', "0 0 -0.5");
+        tulisan.setAttribute('position', "0 0.6 0");
         tulisan.setAttribute('value', informasi);
         tulisan.setAttribute('align', 'center');
         tulisan.setAttribute('color', 'white');
@@ -30,9 +30,9 @@ function createMarker(markerl, scenel) {
 
 // Fungsi mengambil nilai data-marker
 function dataMarker(mark) {
-    // console.log("Marker attributes: preset = " + mark.srcElement.getAttribute("preset") + ", type = " + mark.srcElement.getAttribute("type") + ", value = " + mark.srcElement.getAttribute("value") + ", url = " + mark.srcElement.getAttribute("url"));
-    // console.log(mark.srcElement.getAttribute("data-marker"));
-    return mark.srcElement.getAttribute("data-marker");
+    // console.log("Marker attributes: preset = " + mark.target.getAttribute("preset") + ", type = " + mark.target.getAttribute("type") + ", value = " + mark.target.getAttribute("value") + ", url = " + mark.target.getAttribute("url"));
+    // console.log(mark.target.getAttribute("data-marker"));
+    return mark.target.getAttribute("data-marker");
 }
 
 //Convert radians to degrees
@@ -65,6 +65,12 @@ function navigasiMarker(asl, tujn, nd) {
             let rotasix = Math.degrees(Math.atan(z / y));
             let rotasiy = Math.degrees(Math.atan(x / z));
             let rotasiz = Math.degrees(Math.atan(y / x));
+            rotasix = isNaN(rotasix) ? 0 : rotasix;
+            rotasiy = isNaN(rotasiy) ? 0 : rotasiy;
+            rotasiz = isNaN(rotasiz) ? 0 : rotasiz;
+            rotasix += 180;
+            rotasiy += 180;
+            rotasiz += 180;
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerYes + '"]');
             let bola = document.createElement('a-sphere');
