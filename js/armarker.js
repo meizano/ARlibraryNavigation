@@ -13,6 +13,7 @@ function createMarker(markerl, scenel) {
         let tulisan = document.createElement('a-text');
         let informasi = "";
         informasi += markerl[i].kode;
+        tulisan.setAttribute('position', "0 0 -0.5");
         tulisan.setAttribute('value', informasi);
         tulisan.setAttribute('align', 'center');
         tulisan.setAttribute('color', 'white');
@@ -53,15 +54,18 @@ function navigasiMarker(asl, tujn, nd) {
     for (let i = 0; i < markerPath.length - 1; i++) {
         markerYes = getKode(nd, markerPath[i]);
         if (markerYes !== undefined) {
-            let rx = (markerPath[i + 1][0] - markerPath[i][0] > 0) ? 90 : (markerPath[i + 1][0] - markerPath[i][0] < 0) ? -90 : 0;
-            let ry = (markerPath[i + 1][1] - markerPath[i][1] > 0) ? 90 : (markerPath[i + 1][1] - markerPath[i][1] < 0) ? -90 : 0;
-            let rz = (markerPath[i + 1][2] - markerPath[i][2] > 0) ? 90 : (markerPath[i + 1][2] - markerPath[i][2] < 0) ? -90 : 0;
+            let x = markerPath[i + 1][0] - markerPath[i][0];
+            let y = markerPath[i + 1][1] - markerPath[i][1];
+            let z = markerPath[i + 1][2] - markerPath[i][2];
+            let rotasix = Math.atan(z/y);
+            let rotasiy = Math.atan(x/z);
+            let rotasiz = Math.atan(y/x);
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerYes + '"]');
             let bola = document.createElement('a-sphere');
             bola.setAttribute('position', '0 0.3 0');
             bola.setAttribute('radius', '0.2');
-            bola.setAttribute('rotation', '90 0 90');
+            bola.setAttribute('rotation', rotasix + ' ' + rotasiy + ' ' + rotasiz);
             bola.setAttribute('color', 'green');
             markerAdd.appendChild(bola);
 

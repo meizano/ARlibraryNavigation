@@ -13,12 +13,14 @@ function createMarker(markerl, scenel) {
                     </a-plane>
                 </a-marker>
                 `;
-        marker.addEventListener("markerFound", function (e) {
+        scenel.insertAdjacentHTML("beforeend", marker);
+        
+        let domDataMarker = document.querySelector(`[data-marker="${markerl[i].kode}]"`);
+        domDataMarker.addEventListener("markerFound", function (e) {
             // asal dan navigasiMarker() perlu arnav.js
             asal = dataMarker(e);
             navigasiMarker(asal, tujuan, gedungPerpustakaan());
         });
-        scenel.insertAdjacentHTML("beforeend", marker);
     }
 }
 
