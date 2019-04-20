@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html lang=id>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="description" content="AR Library Navigation">
     <meta name="author" content="Meizano">
     <meta name="theme-color" content="#ff9966" />
+    
     <title>Navigasi Lokasi Perpustakaan</title>
-    <link rel="stylesheet" href="./css/style.css">
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
+        #UI {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
         }
     </style>
     <script src="./lib/aframe-master.min.js"></script>
     <script src="./lib/aframe-ar.min.js"></script>
 </head>
 
-<body>
-    <a-scene embedded vr-mode-ui="enabled: false;" arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;'>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+    <a-scene embedded vr-mode-ui="enabled: false" arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;'>
         <!-- add a simple camera -->
         <a-entity camera></a-entity>
+        <!-- add a barcode marker value 1 -->
+        <a-marker type="barcode" value="30">
+            <a-text value="Marker Barcode 30" rotation="-90 0 0" color="magenta" align="center">
+            </a-text>
+        </a-marker>
     </a-scene>
+    <div id="UI">Navigasi Perpustakaan</div>
 
     <script src="./lib/url-search-params.js"></script>
     <script src="./lib/pathfinding-browser.js"></script>
