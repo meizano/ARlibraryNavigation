@@ -1,8 +1,6 @@
 // Fungsi membuat marker 
 function createMarker(markerl, scenel) {
     for (let i = 0; i < markerl.length; i++) {
-
-
         let marker =
             `<a-marker type="barcode" value="${markerl[i].marker}" data-marker="${markerl[i].kode}">
                     <a-plane rotation="-90 0 0" color="red">
@@ -20,7 +18,6 @@ function createMarker(markerl, scenel) {
             asal = dataMarker(e);
             navigasiMarker(asal, tujuan, gedungPerpustakaan());
         });
-
         scenel.insertAdjacentHTML("beforeend", marker);
     }
 }
@@ -54,9 +51,9 @@ function navigasiMarker(asl, tujn, nd) {
             let x = markerPath[i + 1][0] - markerPath[i][0];
             let y = markerPath[i + 1][1] - markerPath[i][1];
             let z = markerPath[i + 1][2] - markerPath[i][2];
-            let rotasix = Math.tanh(z/y);
-            let rotasiy = Math.tanh(x/z);
-            let rotasiz = Math.tanh(y/x);
+            let rotasix = Math.atan(z/y);
+            let rotasiy = Math.atan(x/z);
+            let rotasiz = Math.atan(y/x);
 
             let markerAdd = scene.querySelector('a-marker[data-marker="' + markerPadaJalur + '"]');
             let panah = `
