@@ -73,6 +73,8 @@ function navigasiMarker(asl, tujn, nd) {
 // fungsi membuat finalMarker
 function finalMarker(scn, dtmarker) {
     let markerFinal = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
+    let finalLama = markerFinal.querySelector("a-sphere");
+    if(finalLama) finalLama.remove();
     let penandaTujuan = `<a-sphere position="0 0.5 0" radius="0.5" rotation="0 0 0" color="yellow"></a-sphere>`;
     markerFinal.insertAdjacentHTML("beforeend", penandaTujuan);
 };
@@ -93,6 +95,8 @@ function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
     rotasiz += 180;
 
     let markerAdd = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
+    let panahLama = markerAdd.querySelector("a-sphere");
+    if(panahLama) panahLama.remove();
     let panah = `
                 <a-sphere position="0 0.3 0" radius="0.2" rotation="${rotasix} ${rotasiy} ${rotasiz}" color="green">
                     <a-cylinder position="0 0.4 0" height="0.8" radius="0.2" color="green"></a-cylinder>
@@ -100,3 +104,26 @@ function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
                 </a-sphere>`;
     markerAdd.insertAdjacentHTML("beforeend", panah);
 }
+
+// Support for remove() element in older browser https://stackoverflow.com/questions/8830839/javascript-dom-remove-element
+(function () {
+    var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
+        remove = function () {
+            // The check here seems pointless, since we're not adding this
+            // method to the prototypes of any any elements that CAN be the
+            // root of the DOM. However, it's required by spec (see point 1 of
+            // https://dom.spec.whatwg.org/#dom-childnode-remove) and would
+            // theoretically make a difference if somebody .apply()ed this
+            // method to the DOM's root node, so let's roll with it.
+            if (this.parentNode != null) {
+                this.parentNode.removeChild(this);
+            }
+        };
+
+    for (var i=0; i<typesToPatch.length; i++) {
+        var type = typesToPatch[i];
+        if (window[type] && !window[type].prototype.remove) {
+            window[type].prototype.remove = remove;
+        }
+    }
+})();
