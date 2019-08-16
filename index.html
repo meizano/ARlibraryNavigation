@@ -8,7 +8,7 @@
     <meta name="description" content="AR Library Navigation">
     <meta name="author" content="Meizano">
     <meta name="theme-color" content="#ff9966" />
-    <title>Navigasi Lokasi Perpustakaan</title>
+    <title>Navigasi AR Lokasi Perpustakaan</title>
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -19,13 +19,66 @@
         <div class="page" id="navigasi">
             <div class="title">
                 <div class="logo"></div>
-                <h1>Navigasi Lokasi Perpustakaan</h1>
+                <h1>Navigasi AR Lokasi Perpustakaan</h1>
             </div>
             <div class="borangInputTujuan">
                 <form id="survey-form" action="ar-library-navigation.html" method="GET">
                     <div class="input-field" id="field-tujuan">
-                        <input type="text" id="tujuan" name="tujuan" placeholder="Masukkan kode tujuan" required
-                            autofocus />
+                        <input type="search" id="tujuan" name="tujuan" list="lokasi" placeholder="Ketik tujuan..."
+                            required autofocus />
+                        <datalist id="lokasi">
+                            <option value="PMP" label="Pintu Masuk Perpustakaan | MARKER 1" />
+                            <option value="RBC1" label="Ruang Baca Satu (Ruang Layanan Sirkulasi) | MARKER 2" />
+                            <option value="RK1A" label="Rak Koleksi A Ruang Baca 1 | MARKER 3" />
+                            <option value="RK1B" label="Rak Koleksi B Ruang Baca 1 | MARKER 4" />
+                            <option value="RK1C" label="Rak Koleksi C Ruang Baca 1 | MARKER 5" />
+                            <option value="RKKI" label="Ruang Layanan Koleksi Karya Ilmiah | MARKER 6" />
+                            <option value="RPK" label="Ruang Pengelolaan" />
+                            <option value="RPA" label="Ruang Pengadaan" />
+                            <option value="RPO" label="Ruang Pengolahan" />
+                            <option value="RPR" label="Ruang Perawatan" />
+                            <option value="TG1BL" label="Tangga 1 Barat Laut (Sebelah Depan Kiri) | MARKER 7" />
+                            <option value="TG1TL" label="Tangga 1 Timur Laut (Sebelah Belakang Kiri) | MARKER 8" />
+                            <option value="TG1TG"
+                                label="Tangga 1 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 9" />
+                            <option value="TG1BD" label="Tangga 1 Barat Daya (Sebelah Depan Kanan) | MARKER 10" />
+                            <option value="TD1BD"
+                                label="Tangga Dalam 1 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 11" />
+                            <option value="RLR" label="Ruang Layanan Referensi" />
+                            <option value="RMJ" label="Majalah dan Jurnal " />
+                            <option value="RKC2" label="Ruang Layanan Koleksi Cadangan lantai 2 | MARKER 12" />
+                            <option value="RC2A" label="Rak Koleksi A Ruang Koleksi Cadangan 2 | MARKER 13" />
+                            <option value="RC2B" label="Rak Koleksi B Ruang Koleksi Cadangan 2 | MARKER 14" />
+                            <option value="RC2C" label="Rak Koleksi C Ruang Koleksi Cadangan 2 | MARKER 15" />
+                            <option value="RKP" label="Ruang Kepala Perpustakaan" />
+                            <option value="RBC2" label="Ruang Baca Dua | MARKER 16" />
+                            <option value="RK2A" label="Rak Koleksi A Ruang Baca 2 | MARKER 17" />
+                            <option value="RK2B" label="Rak Koleksi B Ruang Baca 2 | MARKER 18" />
+                            <option value="RK2C" label="Rak Koleksi C Ruang Baca 2 | MARKER 19" />
+                            <option value="TG2BL" label="Tangga 2 Barat Laut (Sebelah Depan Kiri) | MARKER 20" />
+                            <option value="TG2TL" label="Tangga 2 Timur Laut (Sebelah Belakang Kiri) | MARKER 21" />
+                            <option value="TG2TG"
+                                label="Tangga 2 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 22" />
+                            <option value="TG2BD" label="Tangga 2 Barat Daya (Sebelah Depan Kanan) | MARKER 23" />
+                            <option value="TD2BD"
+                                label="Tangga Dalam 2 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 24" />
+                            <option value="RTI" label="Ruang Pengelola Teknologi Informasi Perpustakaan" />
+                            <option value="RTE" label="Ruang Teater" />
+                            <option value="RSM" label="Ruang Seminar" />
+                            <option value="RRP" label="Ruang Rapat" />
+                            <option value="RMS" label="Ruang Musola" />
+                            <option value="RBC3" label="Ruang Baca Tiga | MARKER 25" />
+                            <option value="RK3A" label="Rak Koleksi A Ruang Baca 3 | MARKER 26" />
+                            <option value="RK3B" label="Rak Koleksi B Ruang Baca 3 | MARKER 27" />
+                            <option value="RK3C" label="Rak Koleksi C Ruang Baca 3 | MARKER 28" />
+                            <option value="TG3BL" label="Tangga 3 Barat Laut (Sebelah Depan Kiri) | MARKER 29" />
+                            <option value="TG3TL" label="Tangga 3 Timur Laut (Sebelah Belakang Kiri) | MARKER 30" />
+                            <option value="TG3TG"
+                                label="Tangga 3 Tenggara (Sebelah Belakang Kanan (menuju Mushola)) | MARKER 31" />
+                            <option value="TG3BD" label="Tangga 3 Barat Daya (Sebelah Depan Kanan) | MARKER 32" />
+                            <option value="TD3BD"
+                                label="Tangga Dalam 3 Barat Daya (Bagian Dalam Ruang Baca 1) | MARKER 33" />
+                        </datalist>
                     </div>
                     <div class="input-field" id="field-submit">
                         <input type="submit" id="submit" name="submit" value="Navigasi" />
