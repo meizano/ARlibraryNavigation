@@ -1,134 +1,167 @@
 [
     {
         "marker": 1,
-        "kode": "PMP"
+        "kode": "PMP",
+        "rotation": [0,0,0]
     },
     {
         "marker": 2,
-        "kode": "RBC1"
+        "kode": "RBC1",
+        "rotation": [0,0,0]
     },
     {
         "marker": 3,
-        "kode": "RK1A"
+        "kode": "RK1A",
+        "rotation": [0,0,0]
     },
     {
         "marker": 4,
-        "kode": "RK1B"
+        "kode": "RK1B",
+        "rotation": [0,0,0]
     },
     {
         "marker": 5,
-        "kode": "RK1C"
+        "kode": "RK1C",
+        "rotation": [0,0,0]
     },
     {
         "marker": 6,
-        "kode": "RKKI"
+        "kode": "RKKI",
+        "rotation": [0,0,0]
     },
     {
         "marker": 7,
-        "kode": "TG1BL"
+        "kode": "TG1BL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 8,
-        "kode": "TG1TL"
+        "kode": "TG1TL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 9,
-        "kode": "TG1TG"
+        "kode": "TG1TG",
+        "rotation": [0,0,0]
     },
     {
         "marker": 10,
-        "kode": "TG1BD"
+        "kode": "TG1BD",
+        "rotation": [0,0,0]
     },
     {
         "marker": 11,
-        "kode": "TD1BD"
+        "kode": "TD1BD",
+        "rotation": [0,0,0]
     },
     {
         "marker": 12,
-        "kode": "RKC2"
+        "kode": "RKC2",
+        "rotation": [0,0,0]
     },
     {
         "marker": 13,
-        "kode": "RC2A"
+        "kode": "RC2A",
+        "rotation": [0,0,0]
     },
     {
         "marker": 14,
-        "kode": "RC2B"
+        "kode": "RC2B",
+        "rotation": [0,0,0]
     },
     {
         "marker": 15,
-        "kode": "RC2C"
+        "kode": "RC2C",
+        "rotation": [0,0,0]
     },
     {
         "marker": 16,
-        "kode": "RBC2"
+        "kode": "RBC2",
+        "rotation": [0,0,0]
     },
     {
         "marker": 17,
-        "kode": "RK2A"
+        "kode": "RK2A",
+        "rotation": [0,0,0]
     },
     {
         "marker": 18,
-        "kode": "RK2B"
+        "kode": "RK2B",
+        "rotation": [0,0,0]
     },
     {
         "marker": 19,
-        "kode": "RK2C"
+        "kode": "RK2C",
+        "rotation": [0,0,0]
     },
     {
         "marker": 20,
-        "kode": "TG2BL"
+        "kode": "TG2BL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 21,
-        "kode": "TG2TL"
+        "kode": "TG2TL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 22,
-        "kode": "TG2TG"
+        "kode": "TG2TG",
+        "rotation": [0,0,0]
     },
     {
         "marker": 23,
-        "kode": "TG2BD"
+        "kode": "TG2BD",
+        "rotation": [0,0,0]
     },
     {
         "marker": 24,
-        "kode": "TD2BD"
+        "kode": "TD2BD",
+        "rotation": [0,0,0]
     },
     {
         "marker": 25,
-        "kode": "RBC3"
+        "kode": "RBC3",
+        "rotation": [0,0,0]
     },
     {
         "marker": 26,
-        "kode": "RK3A"
+        "kode": "RK3A",
+        "rotation": [0,0,0]
     },
     {
         "marker": 27,
-        "kode": "RK3B"
+        "kode": "RK3B",
+        "rotation": [0,0,0]
     },
     {
         "marker": 28,
-        "kode": "RK3C"
+        "kode": "RK3C",
+        "rotation": [0,0,0]
     },
     {
         "marker": 29,
-        "kode": "TG3BL"
+        "kode": "TG3BL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 30,
-        "kode": "TG3TL"
+        "kode": "TG3TL",
+        "rotation": [0,0,0]
     },
     {
         "marker": 31,
-        "kode": "TG3TG"
+        "kode": "TG3TG",
+        "rotation": [0,0,0]
     },
     {
         "marker": 32,
-        "kode": "TG3BD"
+        "kode": "TG3BD",
+        "rotation": [0,0,0]
     },
     {
         "marker": 33,
-        "kode": "TD3BD"
+        "kode": "TD3BD",
+        "rotation": [0,0,0]
     }
 ]

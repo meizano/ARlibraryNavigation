@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="description" content="VR Library Navigation">
+    <meta name="author" content="Meizano">
+    <meta name="theme-color" content="#ff9966" />
+    
+    <title>Navigasi Lokasi Perpustakaan</title>
+    <style>
+        #UI {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+        }
+    </style>
+    <script src="./lib/aframe-master.min.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+    <a-scene>
+        <a-plane position="0 0 -4" width=4 height=4 rotation="-90 0 0" color="blue"></a-plane>
+        <!-- add a simple camera -->
+        <a-camera position="0 6 0"></a-camera>
+    </a-scene>
+    <div id="UI">Navigasi Perpustakaan</div>
+
+    <script src="./lib/url-search-params.js"></script>
+    <script src="./lib/pathfinding-browser.js"></script>
+    <script src="./js/gedungPerpustakaanUnila.js"></script>
+    <script src="./js/navigasi.js"></script>
+    <script src="./js/vrobject.js"></script>
+    <script src="./js/vrnav.js"></script>
+</body>
+
+</html>

@@ -3,12 +3,12 @@ function createMarker(markerl, scenel) {
     for (let i = 0; i < markerl.length; i++) {
         let marker =
             `<a-marker type="barcode" value="${markerl[i].marker}" data-marker="${markerl[i].kode}">
-                    <a-plane rotation="-90 0 0" color="red">
+                    <a-plane rotation="${markerl[i].rotation[0]-90} ${markerl[i].rotation[1]} ${markerl[i].rotation[2]}" color="darkorange">
                         <a-text 
                             value="${markerl[i].kode}" 
-                            color="white" 
+                            color="black" 
                             align="center"
-                            position="0 0.6 0">
+                            position="0 -0.35 0.1">
                         </a-text>
                     </a-plane>
                 </a-marker>
@@ -75,33 +75,35 @@ function finalMarker(scn, dtmarker) {
     let markerFinal = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
     let finalLama = markerFinal.querySelector("a-sphere");
     if(finalLama) finalLama.remove();
-    let penandaTujuan = `<a-sphere position="0 0.5 0" radius="0.5" rotation="0 0 0" color="yellow"></a-sphere>`;
+    let penandaTujuan = `<a-sphere position="0 0.5 0" radius="0.5" rotation="0 0 0" color="blue"></a-sphere>`;
     markerFinal.insertAdjacentHTML("beforeend", penandaTujuan);
 };
 
 // fungsi membuat panahMarker
 function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
-    let x = jalurmarkerberikutnya[0] - jalurmarker[0];
-    let y = jalurmarkerberikutnya[1] - jalurmarker[1];
-    let z = jalurmarkerberikutnya[2] - jalurmarker[2];
-    let rotasix = Math.degrees(Math.atan(z / y));
-    let rotasiy = Math.degrees(Math.atan(x / z));
-    let rotasiz = Math.degrees(Math.atan(y / x));
+    //position a: kiri-kanan b: atas-bawah c: maju-mundur
+    let a = jalurmarkerberikutnya[0] - jalurmarker[0];
+    let c = jalurmarkerberikutnya[1] - jalurmarker[1]; 
+    let b = jalurmarkerberikutnya[2] - jalurmarker[2];
+    //rotation x: b dan c y: a dan c z: a dan b
+    let rotasix = Math.degrees(Math.atan(c / b));
+    let rotasiy = Math.degrees(Math.atan(a / b));
+    let rotasiz = Math.degrees(Math.atan(c / a));
     rotasix = isNaN(rotasix) ? 0 : rotasix;
     rotasiy = isNaN(rotasiy) ? 0 : rotasiy;
     rotasiz = isNaN(rotasiz) ? 0 : rotasiz;
-    rotasix += 180;
-    rotasiy += 180;
-    rotasiz += 180;
+    rotasix += -90;
+    rotasiy += -90;
+    rotasiz += -90;
 
     let markerAdd = scn.querySelector('a-marker[data-marker="' + dtmarker + '"]');
     let panahLama = markerAdd.querySelector("a-sphere");
     if(panahLama) panahLama.remove();
     let panah = `
-                <a-sphere position="0 0.3 0" radius="0.2" rotation="${rotasix} ${rotasiy} ${rotasiz}" color="green">
-                    <a-cylinder position="0 0.4 0" height="0.8" radius="0.2" color="green"></a-cylinder>
-                    <a-cone position="0 1 0" radius-bottom="0.3" radius-top="0" height="0.6" color="green"></a-cone>
-                </a-sphere>`;
+            <a-sphere position="0 0 0.2" radius="0.2" rotation="0 ${rotasiy} ${rotasiz}" color="green">
+                <a-cylinder position="0 0.1 0" height="0.2" radius="0.2" color="green"></a-cylinder>
+                <a-cone position="0 0.4 0" radius-bottom="0.3" radius-top="0" height="0.6" color="darkblue"></a-cone>
+            </a-sphere>`;
     markerAdd.insertAdjacentHTML("beforeend", panah);
 }
 
