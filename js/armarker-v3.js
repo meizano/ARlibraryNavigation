@@ -8,7 +8,7 @@ function createMarker(markerl, scenel) {
                             value="${markerl[i].kode}" 
                             color="black" 
                             align="center"
-                            position="0 -0.35 0.1">
+                            position="0 0.35 0.1">
                         </a-text>
                     </a-plane>
                 </a-marker>
