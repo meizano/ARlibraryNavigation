@@ -26,7 +26,7 @@ function navigasiVRObject(asl, tujn, nd) {
         markerPadaJalur = getKode(nd, markerPath[i]);
         panahMarker(scene, markerPadaJalur, markerPath[i], markerPath[i + 1]);
     }
-    finalMarker(scene, getKode(nd, markerPath[markerPath.length - 1]));
+    finalMarker(scene, getKode(nd, markerPath[markerPath.length - 1]), markerPath[markerPath.length - 1]);
     // }
 
     //Menghitung waktu
@@ -35,16 +35,20 @@ function navigasiVRObject(asl, tujn, nd) {
 }
 
 // fungsi membuat finalMarker
-function finalMarker(scn, dtmarker) {
+function finalMarker(scn, dtmarker, jalurmarker) {
+    console.log(jalurmarker[0]);
+    console.log(jalurmarker[1]);
+    console.log(jalurmarker[2]);
+
     let penandaTujuan = `
-            <a-plane rotation="0 0 0" color="red" position="${dtmarker[0]} ${dtmarker[1]} ${dtmarker[2]}">
+            <a-plane rotation="0 0 0" color="red" position="${jalurmarker[0]} ${jalurmarker[1]} ${jalurmarker[2]}">
                 <a-text 
                     value="${dtmarker}" 
                     color="white" 
                     align="center"
-                    position="0 0.6 0">
+                    position="0 -0.35 0.1">
                 </a-text>
-                <a-sphere position="0 0.5 0" radius="0.5" rotation="0 0 0" color="yellow"></a-sphere>
+                <a-sphere position="0 0 0.2" radius="0.5" rotation="0 0 0" color="yellow"></a-sphere>
             </a-plane>`;
     scn.insertAdjacentHTML("beforeend", penandaTujuan);
 };
