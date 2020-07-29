@@ -2,8 +2,7 @@ let asal = "";
 let tujuan = "";
 
 // GET parameter
-url = new URL(window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location
-    .search);
+url = new URL(window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search);
 let searchParams = new URLSearchParams(url.search);
 asal = url.searchParams.get('asal');
 tujuan = url.searchParams.get('tujuan');

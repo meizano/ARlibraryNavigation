@@ -1,5 +1,5 @@
 //Convert radians to degrees
-Math.degrees = function (radians) {
+Math.degrees = function(radians) {
     return radians * 180 / Math.PI;
 };
 
@@ -16,17 +16,17 @@ function navigasiVRObject(asl, tujn, nd) {
     // if (asl == tujn) {
     //     finalMarker(scene, tujn);
     // } else {
-        let markerPath = findLocation(nd[asl], nd[tujn], nd);
+    let markerPath = findLocation(nd[asl], nd[tujn], nd);
 
-        // Menghitung waktu
-        // console.log("waktu A*");
-        // console.log(new Date().getTime() - start);
+    // Menghitung waktu
+    // console.log("waktu A*");
+    // console.log(new Date().getTime() - start);
 
-        for (let i = 0; i < markerPath.length - 1; i++) {
-            markerPadaJalur = getKode(nd, markerPath[i]);
-            panahMarker(scene, markerPadaJalur, markerPath[i], markerPath[i+1]);
-        }
-        finalMarker(scene, getKode(nd, markerPath[markerPath.length-1]));
+    for (let i = 0; i < markerPath.length - 1; i++) {
+        markerPadaJalur = getKode(nd, markerPath[i]);
+        panahMarker(scene, markerPadaJalur, markerPath[i], markerPath[i + 1]);
+    }
+    finalMarker(scene, getKode(nd, markerPath[markerPath.length - 1]));
     // }
 
     //Menghitung waktu
@@ -37,7 +37,7 @@ function navigasiVRObject(asl, tujn, nd) {
 // fungsi membuat finalMarker
 function finalMarker(scn, dtmarker) {
     let penandaTujuan = `
-            <a-plane rotation="0 0 0" color="red" position="${jalurmarker[0]} ${jalurmarker[1]} ${jalurmarker[2]}">
+            <a-plane rotation="0 0 0" color="red" position="${dtmarker[0]} ${dtmarker[1]} ${dtmarker[2]}">
                 <a-text 
                     value="${dtmarker}" 
                     color="white" 
@@ -50,10 +50,10 @@ function finalMarker(scn, dtmarker) {
 };
 
 // fungsi membuat panahMarker
-function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
+function panahMarker(scn, dtmarker, jalurmarker, jalurmarkerberikutnya) {
     //position a: kiri-kanan b: atas-bawah c: maju-mundur
     let a = jalurmarkerberikutnya[0] - jalurmarker[0];
-    let c = jalurmarkerberikutnya[1] - jalurmarker[1]; 
+    let c = jalurmarkerberikutnya[1] - jalurmarker[1];
     let b = jalurmarkerberikutnya[2] - jalurmarker[2];
     //rotation x: b dan c y: a dan c z: a dan b
     let rotasix = Math.degrees(Math.atan(c / b));
@@ -66,7 +66,7 @@ function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
     rotasiy += -90;
     rotasiz += -90;
 
-    
+
     let panah = `
             <a-plane rotation="0 0 0" color="darkorange" position="${jalurmarker[0]} ${jalurmarker[1]} ${jalurmarker[2]}">
                 <a-text 
@@ -85,9 +85,9 @@ function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
 }
 
 // Support for remove() element in older browser https://stackoverflow.com/questions/8830839/javascript-dom-remove-element
-(function () {
+(function() {
     var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
-        remove = function () {
+        remove = function() {
             // The check here seems pointless, since we're not adding this
             // method to the prototypes of any any elements that CAN be the
             // root of the DOM. However, it's required by spec (see point 1 of
@@ -99,7 +99,7 @@ function panahMarker(scn, dtmarker, jalurmarker,jalurmarkerberikutnya) {
             }
         };
 
-    for (var i=0; i<typesToPatch.length; i++) {
+    for (var i = 0; i < typesToPatch.length; i++) {
         var type = typesToPatch[i];
         if (window[type] && !window[type].prototype.remove) {
             window[type].prototype.remove = remove;
